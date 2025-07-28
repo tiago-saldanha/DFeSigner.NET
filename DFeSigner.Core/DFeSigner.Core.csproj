@@ -11,4 +11,8 @@
     <Folder Include="Provider\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.7" />
+  </ItemGroup>
+
 </Project>
