@@ -4,10 +4,31 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PackageId>DFeSigner.NET</PackageId>
+	<Version>1.0.1</Version>
+	<Authors>Tiago Ávila Saldanha</Authors>
+	<Company>TAS Cloud</Company>
+	<Description>Biblioteca para assinatura digital de Documentos Fiscais Eletrônicos (NF-e, NFC-e).</Description>
+	<RepositoryUrl>https://github.com/tiago-saldanha/DFeSigner</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageProjectUrl>https://github.com/tiago-saldanha/DFeSigner</PackageProjectUrl>
+	<PackageTags>DFe;NFe;NFCe;Assinatura;Xml;Certificado;A1;A3</PackageTags>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageIcon>icon.png</PackageIcon>
+	<PackageReleaseNotes>Biblioteca dedicada a oferecer uma solução simples para assinar digitalmente seus documetos fiscais utilizando um certificado digital(A1/A3).</PackageReleaseNotes>
+	<Copyright>© 2025 Tiago Ávila Saldanha</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.7" />
   </ItemGroup>
+
+  <ItemGroup>
+  	<None Include="..\README.md" Pack="true" PackagePath="" />
+  	<None Include="icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
 
 </Project>
