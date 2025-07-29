@@ -2,13 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Signers\" />
-    <Folder Include="Provider\" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.7" />
   </ItemGroup>
 
 </Project>
