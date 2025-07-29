@@ -16,7 +16,6 @@ O projeto adota uma arquitetura modular com uma classe base abstrata, permitindo
 
 * **Assinatura de NF-e:** Assina digitalmente documentos XML de Nota Fiscal Eletrônica (modelo 55).
 * **Assinatura de NFC-e:** Assina digitalmente documentos XML de Nota Fiscal de Consumidor Eletrônica (modelo 65).
-* **Classe Abstrata `DFeXmlSigner`:** Fornece uma base comum para a lógica de assinatura XML, promovendo reuso de código e facilitando a adição de novos tipos de DF-e.
 * **Validação de Tipo de Documento:** As implementações concretas (NF-e, NFC-e) validam o modelo do documento no XML para garantir que o tipo correto de assinador está sendo usado.
 * **Tratamento de Erros Robusto:** Lançamento de exceções claras para cenários como XML inválido, certificado nulo ou certificado sem chave privada.
 * **Testes Unitários:** Projeto de testes dedicado (xUnit) com exemplos de uso e cenários de sucesso e falha.
