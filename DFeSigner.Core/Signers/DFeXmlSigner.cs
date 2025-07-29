@@ -33,13 +33,7 @@ namespace DFeSigner.Core.Signers
             doc.PreserveWhitespace = true;
             doc.LoadXml(xmlContent);
 
-            // Chama o método abstrato para obter o elemento a ser assinado e seu ID
-            (XmlElement elementToSign, string referenceId) = GetElementToSign(doc);
-
-            if (elementToSign == null)
-            {
-                throw new InvalidOperationException("Não foi possível encontrar o elemento XML para assinar. Verifique a implementação de GetElementToSign.");
-            }
+            string referenceId = GetElementToSign(doc);
 
             SignedXml signedXml = new(doc)
             {
@@ -79,6 +73,6 @@ namespace DFeSigner.Core.Signers
         /// </summary>
         /// <param name="document">O objeto XmlDocument contendo o XML a ser processado.</param>
         /// <returns>Uma tupla contendo o XmlElement a ser assinado e o seu atributo 'Id'.</returns>
-        protected abstract (XmlElement Element, string ReferenceId) GetElementToSign(XmlDocument document);
+        protected abstract string GetElementToSign(XmlDocument document);
     }
 }

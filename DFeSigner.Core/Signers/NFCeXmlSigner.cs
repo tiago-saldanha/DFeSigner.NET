@@ -20,25 +20,24 @@ namespace DFeSigner.Core.Signers
         /// <returns>Uma tupla contendo o XmlElement 'infNFe' e o seu atributo 'Id'.</returns>
         /// <exception cref="InvalidOperationException">Lançada se o elemento 'infNFe' ou seu 'Id' não for encontrado,
         /// ou se o XML não for identificado como uma NFC-e (modelo 65).</exception>
-        protected override (XmlElement Element, string ReferenceId) GetElementToSign(XmlDocument document)
+        protected override string GetElementToSign(XmlDocument document)
         {
             XmlNamespaceManager ns = new XmlNamespaceManager(document.NameTable);
             ns.AddNamespace(PrefixNFCeNamespace, NFCeNamespace);
 
-            XmlElement ideElement = document.SelectSingleNode($"//{PrefixNFCeNamespace}:ide", ns) as XmlElement;
+            XmlElement ideElement = document.GetElementsByTagName("ide")[0] as XmlElement;
             if (ideElement == null)
             {
                 throw new InvalidOperationException("Elemento 'ide' não encontrado no XML. O XML pode não ser um documento fiscal válido.");
             }
-            string modeloDocumento = ideElement.SelectSingleNode($"{PrefixNFCeNamespace}:mod", ns)?.InnerText;
-
+            
+            string modeloDocumento = document.GetElementsByTagName("mod")[0].InnerText;
             if (modeloDocumento != "65")
             {
                 throw new InvalidOperationException($"O XML fornecido não é uma NFC-e (modelo 65). Modelo encontrado: {modeloDocumento}.");
             }
 
-            XmlElement elementToSign = document.SelectSingleNode($"//{PrefixNFCeNamespace}:infNFe", ns) as XmlElement;
-
+            XmlElement elementToSign = document.GetElementsByTagName("infNFe")[0] as XmlElement;
             if (elementToSign == null)
             {
                 throw new InvalidOperationException($"Elemento '{PrefixNFCeNamespace}:infNFe' não encontrado no XML da NFC-e. Verifique a estrutura do XML.");
@@ -50,7 +49,7 @@ namespace DFeSigner.Core.Signers
                 throw new InvalidOperationException($"Atributo 'Id' não encontrado ou vazio no elemento '{PrefixNFCeNamespace}:infNFe'.");
             }
 
-            return (elementToSign, referenceId);
+            return referenceId;
         }
     }
 }
