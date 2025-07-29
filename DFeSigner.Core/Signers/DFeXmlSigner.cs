@@ -29,55 +29,48 @@ namespace DFeSigner.Core.Signers
             if (certificate == null)
                 throw new ArgumentNullException(nameof(certificate), "O certificado digital não pode ser nulo.");
 
-            try
+            XmlDocument doc = new();
+            doc.PreserveWhitespace = true;
+            doc.LoadXml(xmlContent);
+
+            // Chama o método abstrato para obter o elemento a ser assinado e seu ID
+            (XmlElement elementToSign, string referenceId) = GetElementToSign(doc);
+
+            if (elementToSign == null)
             {
-                XmlDocument doc = new();
-                doc.PreserveWhitespace = true;
-                doc.LoadXml(xmlContent);
-
-                // Chama o método abstrato para obter o elemento a ser assinado e seu ID
-                (XmlElement elementToSign, string referenceId) = GetElementToSign(doc);
-
-                if (elementToSign == null)
-                {
-                    throw new InvalidOperationException("Não foi possível encontrar o elemento XML para assinar. Verifique a implementação de GetElementToSign.");
-                }
-
-                SignedXml signedXml = new(doc)
-                {
-                    SigningKey = certificate.GetRSAPrivateKey()
-                };
-                if (signedXml.SigningKey == null)
-                {
-                    throw new InvalidOperationException("O certificado não possui uma chave privada RSA acessível ou compatível para assinatura.");
-                }
-
-                signedXml.SignedInfo.CanonicalizationMethod = SignedXml.XmlDsigC14NTransformUrl;
-                signedXml.SignedInfo.SignatureMethod = SignedXml.XmlDsigRSASHA256Url;
-
-                Reference reference = new($"#{referenceId}");
-                reference.AddTransform(new XmlDsigEnvelopedSignatureTransform());
-                reference.AddTransform(new XmlDsigC14NTransform());
-                reference.DigestMethod = SignedXml.XmlDsigSHA256Url;
-
-                signedXml.AddReference(reference);
-
-                KeyInfo keyInfo = new();
-                keyInfo.AddClause(new KeyInfoX509Data(certificate));
-                signedXml.KeyInfo = keyInfo;
-
-                signedXml.ComputeSignature();
-
-                XmlElement xmlSignature = signedXml.GetXml();
-
-                doc.DocumentElement.AppendChild(xmlSignature);
-
-                return doc.OuterXml;
+                throw new InvalidOperationException("Não foi possível encontrar o elemento XML para assinar. Verifique a implementação de GetElementToSign.");
             }
-            catch (Exception ex)
+
+            SignedXml signedXml = new(doc)
             {
-                throw new ApplicationException($"Erro ao assinar o XML: {ex.Message}", ex);
+                SigningKey = certificate.GetRSAPrivateKey()
+            };
+            if (signedXml.SigningKey == null)
+            {
+                throw new InvalidOperationException("O certificado não possui uma chave privada RSA acessível ou compatível para assinatura.");
             }
+
+            signedXml.SignedInfo.CanonicalizationMethod = SignedXml.XmlDsigC14NTransformUrl;
+            signedXml.SignedInfo.SignatureMethod = SignedXml.XmlDsigRSASHA256Url;
+
+            Reference reference = new($"#{referenceId}");
+            reference.AddTransform(new XmlDsigEnvelopedSignatureTransform());
+            reference.AddTransform(new XmlDsigC14NTransform());
+            reference.DigestMethod = SignedXml.XmlDsigSHA256Url;
+
+            signedXml.AddReference(reference);
+
+            KeyInfo keyInfo = new();
+            keyInfo.AddClause(new KeyInfoX509Data(certificate));
+            signedXml.KeyInfo = keyInfo;
+
+            signedXml.ComputeSignature();
+
+            XmlElement xmlSignature = signedXml.GetXml();
+
+            doc.DocumentElement.AppendChild(xmlSignature);
+
+            return doc.OuterXml;
         }
 
         /// <summary>
