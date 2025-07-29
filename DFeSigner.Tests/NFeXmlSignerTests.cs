@@ -8,6 +8,7 @@ namespace DFeSigner.Tests
         private readonly string _nfePath = Path.Combine(AppContext.BaseDirectory, "nfe.xml");
         private readonly string _nfcePath = Path.Combine(AppContext.BaseDirectory, "nfce.xml");
         private readonly string _certificatePath = Path.Combine(AppContext.BaseDirectory, "certificate.pfx");
+        private readonly string _certificateInvalidPath = Path.Combine(AppContext.BaseDirectory, "certificate.cer");
         private readonly string _certificatePassword = "123";
 
         [Fact]
@@ -88,6 +89,20 @@ namespace DFeSigner.Tests
             NFeXmlSigner signer = new NFeXmlSigner();
 
             Assert.Throws<InvalidOperationException>(() => signer.Sign(nfceXmlContent, certificate));
+        }
+
+        [Fact]
+        public void Sign_CertificateWithoutPrivateKey_ThrowsInvalidOperationException()
+        {
+            string xmlContent = File.ReadAllText(_nfePath);
+
+            X509Certificate2 certificate = new X509Certificate2(_certificateInvalidPath);
+            Assert.Null(certificate.GetRSAPrivateKey());
+
+            NFeXmlSigner signer = new NFeXmlSigner();
+
+            var ex = Assert.Throws<InvalidOperationException>(() => signer.Sign(xmlContent, certificate));
+            Assert.Contains("O certificado não possui uma chave privada RSA acessível ou compatível para assinatura.", ex.Message);
         }
     }
 }

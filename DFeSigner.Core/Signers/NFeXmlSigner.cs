@@ -18,7 +18,7 @@ namespace DFeSigner.Core.Signers
         /// <returns>Uma tupla contendo o XmlElement 'infNFe' e o seu atributo 'Id'.</returns>
         /// <exception cref="InvalidOperationException">Lançada se o elemento 'infNFe' ou seu 'Id' não for encontrado,
         /// ou se o XML não for identificado como uma NF-e (modelo 55).</exception>
-        protected override string GetElementToSign(XmlDocument document)
+        protected override string GetReferenceId(XmlDocument document)
         {
             XmlNamespaceManager ns = new(document.NameTable);
             ns.AddNamespace(PrefixNFeNamespace, NFeNamespace);
