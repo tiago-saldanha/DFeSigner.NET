@@ -8,7 +8,7 @@
 
 ## 📖 Sobre o Projeto
 
-`DFeSigner.NET` é uma biblioteca em C# (.NET) projetada para simplificar o processo de assinatura digital de Documentos Fiscais Eletrônicos (DF-e) no padrão brasileiro. Utilizando certificados digitais X.509 (A1 ou A3), a biblioteca oferece uma solução flexível e robusta para integrar a funcionalidade de assinatura em suas aplicações, com foco inicial em NF-e (Nota Fiscal Eletrônica) e NFC-e (Nota Fiscal de Consumidor Eletrônica).
+`DFeSigner` é uma biblioteca em C# (.NET) projetada para simplificar o processo de assinatura digital de Documentos Fiscais Eletrônicos (DF-e) no padrão brasileiro. Utilizando certificados digitais X.509 (A1 ou A3), a biblioteca oferece uma solução flexível e robusta para integrar a funcionalidade de assinatura em suas aplicações, com foco inicial em NF-e (Nota Fiscal Eletrônica) e NFC-e (Nota Fiscal de Consumidor Eletrônica).
 
 O projeto adota uma arquitetura modular com uma classe base abstrata, permitindo a fácil extensão para outros tipos de DF-e no futuro, como CT-e (Conhecimento de Transporte Eletrônico) e MDF-e (Manifesto Eletrônico de Documentos Fiscais). Acompanha um projeto de testes unitários abrangente para garantir a confiabilidade e a validação das funcionalidades de assinatura.
 
@@ -36,7 +36,7 @@ Para configurar e executar o projeto, siga os passos abaixo:
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone [https://github.com/tiago-saldanha/DFeSigner.NET.git](https://github.com/SEU_USUARIO/DFeSigner.NET.git)
+    git clone https://github.com/tiago-saldanha/DFeSigner.git
     cd DFeSigner.NET
     ```
 
