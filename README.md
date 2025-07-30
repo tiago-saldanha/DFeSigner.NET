@@ -18,7 +18,6 @@ O projeto adota uma arquitetura modular permitindo a fácil extensão para outro
 * **Assinatura de NFC-e:** Assina digitalmente documentos XML de Nota Fiscal de Consumidor Eletrônica (modelo 65).
 * **Assinatura de CT-e:** Assina digitalmente documentos XML de Conhecimento de Transporte Eletrônico (modelo 57).
 * **Assinatura de MDF-e:** Assina digitalmente documentos XML de Manifesto Eletrônico de Documentos Fiscais (modelo 58).
-
 * **Validação de Tipo de Documento:** As implementações concretas (NF-e, NFC-e, CT-e, MDF-e) validam o modelo do documento no XML para garantir que o tipo correto de assinador está sendo usado.
 * **Tratamento de Erros Robusto:** Lançamento de exceções personalizadas e claras para cenários como XML inválido, certificado nulo, certificado sem chave privada, XML sem a tag raiz esperada ou sem o referenceId.
 * **Testes Unitários:** Projeto de testes dedicado (xUnit) com exemplos de uso e cenários de sucesso e falha.
