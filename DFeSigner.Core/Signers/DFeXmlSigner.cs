@@ -2,6 +2,7 @@
 using System.Security.Cryptography.Xml;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
+using DFeSigner.Core.Exceptions;
 
 namespace DFeSigner.Core.Signers
 {
@@ -18,9 +19,8 @@ namespace DFeSigner.Core.Signers
         /// <param name="xmlContent">O conteúdo do XML a ser assinado.</param>
         /// <param name="certificate">O certificado digital X.509 a ser usado para a assinatura.</param>
         /// <returns>O XML assinado como uma string, ou lança uma exceção em caso de erro.</returns>
-        /// <exception cref="ArgumentException">Lançada se o conteúdo XML for nulo ou vazio.</exception>
-        /// <exception cref="ArgumentNullException">Lançada se o certificado for nulo.</exception>
-        /// <exception cref="InvalidOperationException">Lançada se o elemento a ser assinado não for encontrado ou o certificado não tiver chave privada.</exception>
+        /// <exception cref="InvalidXmlFormatException">Lançada se o conteúdo XML for nulo ou vazio.</exception>
+        /// <exception cref="InvalidCertificateException">Lançada se o certificado for nulo ou não possuir uma chave privada acessível.</exception>
         public string Sign(string xmlContent, X509Certificate2 certificate)
         {
             ValidateInput(xmlContent, certificate);
@@ -52,14 +52,14 @@ namespace DFeSigner.Core.Signers
         /// </summary>
         /// <param name="xmlContent">O conteúdo do XML a ser validado.</param>
         /// <param name="certificate">O certificado digital X.509 a ser validado.</param>
-        /// <exception cref="ArgumentException">Lançada se o conteúdo XML for nulo ou vazio.</exception>
-        /// <exception cref="ArgumentNullException">Lançada se o certificado for nulo.</exception>
+        /// <exception cref="InvalidXmlFormatException">Lançada se o conteúdo XML for nulo ou vazio.</exception>
+        /// <exception cref="InvalidCertificateException">Lançada se o certificado for nulo ou não possuir uma chave privada acessível.</exception>
         private void ValidateInput(string xmlContent, X509Certificate2 certificate)
         {
             if (string.IsNullOrWhiteSpace(xmlContent))
-                throw new ArgumentException("O conteúdo XML não pode ser nulo ou vazio.", nameof(xmlContent));
+                throw new InvalidXmlFormatException();
             if (certificate == null)
-                throw new ArgumentNullException(nameof(certificate), "O certificado digital não pode ser nulo.");
+                throw new InvalidCertificateException();
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace DFeSigner.Core.Signers
 
             if (signedXml.SigningKey == null)
             {
-                throw new InvalidOperationException("O certificado não possui uma chave privada RSA acessível ou compatível para assinatura.");
+                throw new InvalidCertificateException();
             }
 
             signedXml.SignedInfo.CanonicalizationMethod = SignedXml.XmlDsigC14NTransformUrl;

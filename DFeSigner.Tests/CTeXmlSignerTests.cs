@@ -1,4 +1,5 @@
-﻿using DFeSigner.Core.Signers;
+﻿using DFeSigner.Core.Exceptions;
+using DFeSigner.Core.Signers;
 using System.Security.Cryptography.X509Certificates;
 
 namespace DFeSigner.Tests
@@ -40,7 +41,8 @@ namespace DFeSigner.Tests
             X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
             CTeXmlSigner signer = new CTeXmlSigner();
 
-            Assert.Throws<InvalidOperationException>(() => signer.Sign(invalidXml, certificate));
+            var ex = Assert.Throws<MissingReferenceIdException>(() => signer.Sign(invalidXml, certificate));
+            Assert.Contains("O atributo 'Id' (referenceId) não foi encontrado ou está vazio no elemento 'cte:infCte'.", ex.Message);
         }
 
         [Fact]
@@ -51,7 +53,8 @@ namespace DFeSigner.Tests
             X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
             CTeXmlSigner signer = new CTeXmlSigner();
 
-            Assert.Throws<InvalidOperationException>(() => signer.Sign(invalidXml, certificate));
+            var ex = Assert.Throws<InvalidXmlFormatException>(() => signer.Sign(invalidXml, certificate));
+            Assert.Contains("O XML fornecido não contém a tag raiz esperada para assinatura digital: 'cte:infCte'.", ex.Message);
         }
 
         [Fact]
@@ -62,7 +65,8 @@ namespace DFeSigner.Tests
             X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
             CTeXmlSigner signer = new CTeXmlSigner();
 
-            Assert.Throws<InvalidOperationException>(() => signer.Sign(invalidXml, certificate));
+            var ex = Assert.Throws<MissingXmlElementException>(() => signer.Sign(invalidXml, certificate));
+            Assert.Contains("Elemento 'ide' não encontrado no XML dentro de 'infCte'.", ex.Message);
         }
 
         [Fact]
@@ -72,7 +76,8 @@ namespace DFeSigner.Tests
             X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
             CTeXmlSigner signer = new CTeXmlSigner();
 
-            Assert.Throws<ArgumentException>(() => signer.Sign(invalidXml, certificate));
+            var ex = Assert.Throws<InvalidXmlFormatException>(() => signer.Sign(invalidXml, certificate));
+            Assert.Contains("O XML fornecido não está no formato esperado ou é nulo/vazio.", ex.Message);
         }
 
         [Fact]
@@ -82,7 +87,8 @@ namespace DFeSigner.Tests
             X509Certificate2 nullCertificate = null;
             CTeXmlSigner signer = new CTeXmlSigner();
 
-            Assert.Throws<ArgumentNullException>(() => signer.Sign(xmlContent, nullCertificate));
+            var ex = Assert.Throws<InvalidCertificateException>(() => signer.Sign(xmlContent, nullCertificate));
+            Assert.Contains("O certificado digital fornecido é inválido ou não possui uma chave privada acessível.", ex.Message);
         }
 
         [Fact]
@@ -92,7 +98,8 @@ namespace DFeSigner.Tests
             X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
             CTeXmlSigner signer = new CTeXmlSigner();
 
-            Assert.Throws<InvalidOperationException>(() => signer.Sign(nfceXmlContent, certificate));
+            var ex = Assert.Throws<UnexpectedDocumentTypeException>(() => signer.Sign(nfceXmlContent, certificate));
+            Assert.Contains("O XML fornecido não é do tipo de documento esperado. Esperado modelo: 57, Encontrado modelo: 55.", ex.Message);
         }
 
         [Fact]
@@ -105,8 +112,8 @@ namespace DFeSigner.Tests
 
             CTeXmlSigner signer = new CTeXmlSigner();
 
-            var ex = Assert.Throws<InvalidOperationException>(() => signer.Sign(xmlContent, certificate));
-            Assert.Contains("O certificado não possui uma chave privada RSA acessível ou compatível para assinatura.", ex.Message);
+            var ex = Assert.Throws<InvalidCertificateException>(() => signer.Sign(xmlContent, certificate));
+            Assert.Contains("O certificado digital fornecido é inválido ou não possui uma chave privada acessível.", ex.Message);
         }
     }
 }

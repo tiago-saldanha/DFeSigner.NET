@@ -6,18 +6,18 @@
     <Nullable>disable</Nullable>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<PackageId>DFeSigner.NET</PackageId>
-	<Version>1.0.1</Version>
+	<Version>1.0.3</Version>
 	<Authors>Tiago Ávila Saldanha</Authors>
 	<Company>TAS Cloud</Company>
 	<Description>Biblioteca para assinatura digital de Documentos Fiscais Eletrônicos (NF-e, NFC-e).</Description>
-	<RepositoryUrl>https://github.com/tiago-saldanha/DFeSigner</RepositoryUrl>
+	<RepositoryUrl>https://github.com/tiago-saldanha/DFeSigner.NET</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<PackageProjectUrl>https://github.com/tiago-saldanha/DFeSigner</PackageProjectUrl>
+	<PackageProjectUrl>https://github.com/tiago-saldanha/DFeSigner.NET</PackageProjectUrl>
 	<PackageTags>DFe;NFe;NFCe;Assinatura;Xml;Certificado;A1;A3</PackageTags>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<PackageIcon>icon.png</PackageIcon>
-	<PackageReleaseNotes>Biblioteca dedicada a oferecer uma solução simples para assinar digitalmente seus documetos fiscais utilizando um certificado digital(A1/A3).</PackageReleaseNotes>
+	<PackageReleaseNotes>Biblioteca dedicada a oferecer uma solução simples para assinar digitalmente seus documentos fiscais, incluindo NF-e, NFC-e, CT-e e MDF-e, utilizando um certificado digital (A1/A3).</PackageReleaseNotes>
 	<Copyright>© 2025 Tiago Ávila Saldanha</Copyright>
   </PropertyGroup>
 
