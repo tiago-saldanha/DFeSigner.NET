@@ -25,16 +25,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="certificate.cer">
+    <None Update="Certificates\certificate.cer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="certificate.pfx">
+    <None Update="Certificates\certificate.pfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="nfce.xml">
+    <None Update="Xml\cte.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="nfe.xml">
+    <None Update="Xml\nfce.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Xml\nfe.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

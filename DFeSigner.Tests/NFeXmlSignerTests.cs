@@ -5,10 +5,10 @@ namespace DFeSigner.Tests
 {
     public class NFeXmlSignerTests
     {
-        private readonly string _nfePath = Path.Combine(AppContext.BaseDirectory, "nfe.xml");
-        private readonly string _nfcePath = Path.Combine(AppContext.BaseDirectory, "nfce.xml");
-        private readonly string _certificatePath = Path.Combine(AppContext.BaseDirectory, "certificate.pfx");
-        private readonly string _certificateInvalidPath = Path.Combine(AppContext.BaseDirectory, "certificate.cer");
+        private readonly string _nfePath = Path.Combine(AppContext.BaseDirectory, "Xml", "nfe.xml");
+        private readonly string _nfcePath = Path.Combine(AppContext.BaseDirectory, "Xml", "nfce.xml");
+        private readonly string _certificatePath = Path.Combine(AppContext.BaseDirectory, "Certificates", "certificate.pfx");
+        private readonly string _certificateInvalidPath = Path.Combine(AppContext.BaseDirectory, "Certificates", "certificate.cer");
         private readonly string _certificatePassword = "123";
 
         [Fact]

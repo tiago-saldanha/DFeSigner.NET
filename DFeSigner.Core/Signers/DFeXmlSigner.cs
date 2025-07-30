@@ -21,7 +21,6 @@ namespace DFeSigner.Core.Signers
         /// <exception cref="ArgumentException">Lançada se o conteúdo XML for nulo ou vazio.</exception>
         /// <exception cref="ArgumentNullException">Lançada se o certificado for nulo.</exception>
         /// <exception cref="InvalidOperationException">Lançada se o elemento a ser assinado não for encontrado ou o certificado não tiver chave privada.</exception>
-        /// <exception cref="ApplicationException">Lançada para erros gerais durante o processo de assinatura.</exception>
         public string Sign(string xmlContent, X509Certificate2 certificate)
         {
             ValidateInput(xmlContent, certificate);

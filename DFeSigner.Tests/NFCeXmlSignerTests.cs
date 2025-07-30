@@ -5,9 +5,10 @@ namespace DFeSigner.Tests
 {
     public class NFCeXmlSignerTests
     {
-        private readonly string _nfcePath = Path.Combine(AppContext.BaseDirectory, "nfce.xml");
-        private readonly string _certificatePath = Path.Combine(AppContext.BaseDirectory, "certificate.pfx");
-        private readonly string _certificateInvalidPath = Path.Combine(AppContext.BaseDirectory, "certificate.cer");
+        private readonly string _nfePath = Path.Combine(AppContext.BaseDirectory, "Xml", "nfe.xml");
+        private readonly string _nfcePath = Path.Combine(AppContext.BaseDirectory, "Xml", "nfce.xml");
+        private readonly string _certificatePath = Path.Combine(AppContext.BaseDirectory, "Certificates", "certificate.pfx");
+        private readonly string _certificateInvalidPath = Path.Combine(AppContext.BaseDirectory, "Certificates", "certificate.cer");
         private readonly string _certificatePassword = "123";
 
         [Fact]
@@ -73,7 +74,7 @@ namespace DFeSigner.Tests
         [Fact]
         public void Sign_NFeXmlPassedToNFCeSigner_ThrowsInvalidOperationException()
         {
-            string nfeXmlContent = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "nfe.xml"));
+            string nfeXmlContent = File.ReadAllText(_nfePath);
             X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
             NFCeXmlSigner signer = new NFCeXmlSigner();
 
