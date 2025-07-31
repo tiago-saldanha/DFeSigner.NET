@@ -206,8 +206,16 @@ public class ExemploAssinatura
 }
 ```
 
-## 📄 Licença
-Este projeto está licenciado sob a Licença MIT. [Clique aqui](https://github.com/tiago-saldanha/DFeSigner.NET/blob/master/LICENSE) para mais detalhes.
+## 🛡️ Licença e Atribuição
 
-## Copyright
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
+
+De acordo com os termos da licença, qualquer redistribuição ou uso do código deve incluir o seguinte aviso de copyright:
+
 © 2025 Tiago Ávila Saldanha
+
+## 📢 Atribuição adicional
+
+Além disso, solicita-se que qualquer uso público, fork ou redistribuição com alterações visíveis contenha uma citação clara ao autor original:  
+[Tiago Ávila Saldanha](https://github.com/tiago-saldanha)
+
