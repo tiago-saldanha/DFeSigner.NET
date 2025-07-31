@@ -39,6 +39,33 @@ namespace DFeSigner.Core.Signers
         }
 
         /// <summary>
+        /// Verifica se um documento XML possui uma assinatura digital válida.
+        /// Este método procura pelo elemento &lt;Signature&gt; no namespace XML Digital Signature
+        /// e valida a integridade da assinatura.
+        /// </summary>
+        /// <param name="xmlContent">O conteúdo do XML como uma string para ser validado.</param>
+        /// <returns>
+        /// <c>true</c> se a assinatura digital no XML for válida; caso contrário, <c>false</c>.
+        /// </returns>
+        /// <exception cref="InvalidXmlFormatException">Lançada quando o <paramref name="xmlContent"/> é nulo ou vazio.</exception>
+        /// <exception cref="MissingSignatureElementException">Lançada quando o elemento 'Signature' não é encontrado no XML.</exception>
+        public bool IsSignatureValid(string xmlContent)
+        {
+            XmlDocument doc = GetXmlDocument(xmlContent);
+            SignedXml signedXml = new(doc);
+
+            XmlElement signatureElement = doc.GetElementsByTagName("Signature", SignedXml.XmlDsigNamespaceUrl)[0] as XmlElement;
+            if (signatureElement == null)
+            {
+                throw new MissingSignatureElementException();
+            }
+
+            signedXml.LoadXml(signatureElement);
+
+            return signedXml.CheckSignature();
+        }
+
+        /// <summary>
         /// Método abstrato que deve ser implementado pelas classes concretas
         /// para identificar o elemento XML a ser assinado e seu ID de referência.
         /// </summary>
@@ -67,8 +94,11 @@ namespace DFeSigner.Core.Signers
         /// </summary>
         /// <param name="xmlContent">O conteúdo XML como string.</param>
         /// <returns>Um objeto XmlDocument carregado e configurado.</returns>
+        /// <exception cref="InvalidXmlFormatException">Lançada quando o <paramref name="xmlContent"/> é nulo ou vazio.</exception>
         private XmlDocument GetXmlDocument(string xmlContent)
         {
+            if (string.IsNullOrWhiteSpace(xmlContent))
+                throw new InvalidXmlFormatException();
             XmlDocument doc = new();
             doc.PreserveWhitespace = true;
             doc.LoadXml(xmlContent);
@@ -94,7 +124,7 @@ namespace DFeSigner.Core.Signers
             }
 
             signedXml.SignedInfo.CanonicalizationMethod = SignedXml.XmlDsigC14NTransformUrl;
-            signedXml.SignedInfo.SignatureMethod = SignedXml.XmlDsigRSASHA256Url;
+            signedXml.SignedInfo.SignatureMethod = SignedXml.XmlDsigRSASHA1Url;
 
             return signedXml;
         }
@@ -110,7 +140,7 @@ namespace DFeSigner.Core.Signers
             Reference reference = new($"#{referenceId}");
             reference.AddTransform(new XmlDsigEnvelopedSignatureTransform());
             reference.AddTransform(new XmlDsigC14NTransform());
-            reference.DigestMethod = SignedXml.XmlDsigSHA256Url;
+            reference.DigestMethod = SignedXml.XmlDsigSHA1Url;
             return reference;
         }
 
