@@ -8,6 +8,7 @@ namespace DFeSigner.Tests
     {
         private readonly string _nfePath = Path.Combine(AppContext.BaseDirectory, "Xml", "nfe.xml");
         private readonly string _nfcePath = Path.Combine(AppContext.BaseDirectory, "Xml", "nfce.xml");
+        private readonly string _dfeValidPath = Path.Combine(AppContext.BaseDirectory, "Xml", "dfe-valid.xml");
         private readonly string _certificatePath = Path.Combine(AppContext.BaseDirectory, "Certificates", "certificate.pfx");
         private readonly string _certificateInvalidPath = Path.Combine(AppContext.BaseDirectory, "Certificates", "certificate.cer");
         private readonly string _certificatePassword = "123";
@@ -114,6 +115,51 @@ namespace DFeSigner.Tests
 
             var ex = Assert.Throws<InvalidCertificateException>(() => signer.Sign(xmlContent, certificate));
             Assert.Contains("O certificado digital fornecido é inválido ou não possui uma chave privada acessível.", ex.Message);
+        }
+
+        [Fact]
+        public void Sign_ValidNFeXmlAndCertificate_IsSignatureValidReturnsTrue()
+        {
+            string xmlContent = File.ReadAllText(_nfePath);
+            X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+
+            NFeXmlSigner signer = new NFeXmlSigner();
+            string signedXml = signer.Sign(xmlContent, certificate);
+
+            Assert.False(string.IsNullOrWhiteSpace(signedXml), "O XML assinado não pode ter seu conteúdo vazio");
+            Assert.Contains("<Signature", signedXml);
+
+            Assert.True(signer.IsSignatureValid(signedXml), "O XML foi assinado com sucesso!");
+        }
+
+        [Fact]
+        public void Sign_ValidXmlWithValidCertificate_ReturnsSignedXml()
+        {
+            string xmlContent = File.ReadAllText(_dfeValidPath);
+            NFeXmlSigner signer = new NFeXmlSigner();
+
+            var expected = signer.IsSignatureValid(xmlContent);
+            Assert.True(expected, "A assinatura digital do XML assinado deve ser válida.");
+        }
+
+        [Fact]
+        public void Sign_NullOrEmptyXmlContent_ThrowsArgumentException()
+        {
+            string xmlContent = string.Empty;
+            NFeXmlSigner signer = new NFeXmlSigner();
+
+            var ex = Assert.Throws<InvalidXmlFormatException>(() => signer.IsSignatureValid(xmlContent));
+            Assert.Contains("O XML fornecido não está no formato esperado ou é nulo/vazio.", ex.Message);
+        }
+
+        [Fact]
+        public void IsSignatureValid_XmlWithoutSignatureElement_ThrowsMissingSignatureElementException()
+        {
+            string xmlContent = File.ReadAllText(_nfePath);
+            NFeXmlSigner signer = new NFeXmlSigner();
+
+            var ex = Assert.Throws<MissingSignatureElementException>(() => signer.IsSignatureValid(xmlContent));
+            Assert.Contains("O XML fornecido não contém a tag Signature necessária para a validação da assinatura digital.", ex.Message);
         }
     }
 }

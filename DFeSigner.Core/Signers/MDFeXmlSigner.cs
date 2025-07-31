@@ -1,5 +1,4 @@
-﻿using System;
-using System.Xml;
+﻿using System.Xml;
 using DFeSigner.Core.Exceptions;
 
 namespace DFeSigner.Core.Signers
@@ -9,45 +8,46 @@ namespace DFeSigner.Core.Signers
     /// </summary>
     public class MDFeXmlSigner : DFeXmlSigner
     {
-        private static readonly string NFeNamespace = "http://www.portalfiscal.inf.br/mdfe";
-        private static readonly string PrefixNFeNamespace = "mdfe";
+        private const string MDFeNamespace = "http://www.portalfiscal.inf.br/mdfe";
+        private const string PrefixMDFeNamespace = "mdfe";
+        private const string RootElement = "infMDFe";
 
         /// <summary>
-        /// Implementação específica para MDF-e para identificar o elemento 'infMDFe' a ser assinado.
+        /// Implementação específica para MDF-e para identificar o elemento root 'infMDFe' a ser assinado.
         /// </summary>
         /// <param name="document">O objeto XmlDocument contendo o XML da MDF-e.</param>
-        /// <returns>Uma tupla contendo o XmlElement 'infMDFe' e o seu atributo 'Id'.</returns>
+        /// <returns>Uma string contendo o atributo 'Id' do elemento root 'infMDFe'.</returns>
         /// <exception cref="MissingXmlElementException">Lançada se o elemento 'ide' não for encontrado.</exception>
         /// <exception cref="UnexpectedDocumentTypeException">Lançada se o elemento 'mod' for diferente de 58(MDF-e).</exception>
         /// <exception cref="InvalidXmlFormatException">Lançada se o elemento root para a assinatura 'infMDFe' não for encontrado.</exception>
-        /// <exception cref="MissingReferenceIdException">Lançada se o atributo referenceId não for encontrado no elemento 'infMDFe'.</exception>
+        /// <exception cref="MissingReferenceIdException">Lançada se o atributo referenceId não for encontrado no elemento root 'infMDFe'.</exception>
         protected override string GetReferenceId(XmlDocument document)
         {
             XmlNamespaceManager ns = new(document.NameTable);
-            ns.AddNamespace(PrefixNFeNamespace, NFeNamespace);
+            ns.AddNamespace(PrefixMDFeNamespace, MDFeNamespace);
 
-            XmlElement ideElement = document.GetElementsByTagName("ide")[0] as XmlElement;
+            XmlElement ideElement = document.SelectSingleNode($"//{PrefixMDFeNamespace}:ide", ns) as XmlElement;
             if (ideElement == null)
             {
-                throw new MissingXmlElementException("ide", "infMDFe");
+                throw new MissingXmlElementException("ide", RootElement);
             }
 
-            string modeloDocumento = document.GetElementsByTagName("mod")[0].InnerText;
-            if (modeloDocumento != "58")
+            string model = document.SelectSingleNode($"//{PrefixMDFeNamespace}:mod", ns)?.InnerText;
+            if (model != "58")
             {
-                throw new UnexpectedDocumentTypeException("58", modeloDocumento);
+                throw new UnexpectedDocumentTypeException("58", model);
             }
 
-            XmlElement elementToSign = document.GetElementsByTagName("infMDFe")[0] as XmlElement;
+            XmlElement elementToSign = document.SelectSingleNode($"//{PrefixMDFeNamespace}:{RootElement}", ns) as XmlElement;
             if (elementToSign == null)
             {
-                throw new InvalidXmlFormatException($"{PrefixNFeNamespace}:infMDFe");
+                throw new InvalidXmlFormatException($"{PrefixMDFeNamespace}:{RootElement}");
             }
 
             string referenceId = elementToSign.Attributes["Id"]?.Value;
             if (string.IsNullOrWhiteSpace(referenceId))
             {
-                throw new MissingReferenceIdException($"{PrefixNFeNamespace}:infMDFe");
+                throw new MissingReferenceIdException($"{PrefixMDFeNamespace}:{RootElement}");
             }
 
             return referenceId;

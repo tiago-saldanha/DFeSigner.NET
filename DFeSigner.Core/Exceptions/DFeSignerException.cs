@@ -96,12 +96,21 @@ namespace DFeSigner.Core.Exceptions
     {
         public string ElementName { get; }
         public string ParentElement { get; }
-        
+
         public MissingXmlElementException(string elementName, string parentElement)
             : base($"Elemento '{elementName}' não encontrado no XML{(parentElement != null ? $" dentro de '{parentElement}'" : "")}.")
         {
             ElementName = elementName;
             ParentElement = parentElement;
         }
+    }
+
+    /// <summary>
+    /// Exceção para quando um XML não contém a tag Signature.
+    /// </summary>
+    public class MissingSignatureElementException : DFeSignerException
+    {
+        public MissingSignatureElementException()
+            : base("O XML fornecido não contém a tag Signature necessária para a validação da assinatura digital.") { }
     }
 }
