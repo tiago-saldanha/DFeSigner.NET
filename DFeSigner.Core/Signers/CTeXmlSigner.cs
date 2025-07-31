@@ -8,45 +8,46 @@ namespace DFeSigner.Core.Signers
     /// </summary>
     public class CTeXmlSigner : DFeXmlSigner
     {
-        private static readonly string CTeNamespace = "http://www.portalfiscal.inf.br/cte";
-        private static readonly string PrefixCTeNamespace = "cte";
+        private const string CTeNamespace = "http://www.portalfiscal.inf.br/cte";
+        private const string PrefixCTeNamespace = "cte";
+        private const string RootElement = "infCte";
 
         /// <summary>
-        /// Implementação específica para CT-e para identificar o elemento 'infCte' a ser assinado.
+        /// Implementação específica para CT-e para identificar o elemento root 'infCte' a ser assinado.
         /// </summary>
         /// <param name="document">O objeto XmlDocument contendo o XML da CT-e.</param>
-        /// <returns>Uma tupla contendo o XmlElement 'infCte' e o seu atributo 'Id'.</returns>
+        /// <returns>Uma string contendo o atributo 'Id' do elemento root 'infCte'.</returns>
         /// <exception cref="MissingXmlElementException">Lançada se o elemento 'ide' não for encontrado.</exception>
         /// <exception cref="UnexpectedDocumentTypeException">Lançada se o elemento 'mod' for diferente de 57(CT-e).</exception>
         /// <exception cref="InvalidXmlFormatException">Lançada se o elemento root para a assinatura 'infCte' não for encontrado.</exception>
-        /// <exception cref="MissingReferenceIdException">Lançada se o atributo referenceId não for encontrado no elemento 'infCte'.</exception>
+        /// <exception cref="MissingReferenceIdException">Lançada se o atributo referenceId não for encontrado no elemento root 'infCte'.</exception>
         protected override string GetReferenceId(XmlDocument document)
         {
             XmlNamespaceManager ns = new(document.NameTable);
             ns.AddNamespace(PrefixCTeNamespace, CTeNamespace);
 
-            XmlElement ideElement = document.GetElementsByTagName("ide")[0] as XmlElement;
+            XmlElement ideElement = document.SelectSingleNode($"//{PrefixCTeNamespace}:ide", ns) as XmlElement;
             if (ideElement == null)
             {
-                throw new MissingXmlElementException("ide", "infCte");
+                throw new MissingXmlElementException("ide", RootElement);
             }
 
-            string modeloDocumento = document.GetElementsByTagName("mod")[0].InnerText;
-            if (modeloDocumento != "57")
+            string model = document.SelectSingleNode($"//{PrefixCTeNamespace}:mod", ns)?.InnerText;
+            if (model != "57")
             {
-                throw new UnexpectedDocumentTypeException("57", modeloDocumento);
+                throw new UnexpectedDocumentTypeException("57", model);
             }
 
-            XmlElement elementToSign = document.GetElementsByTagName("infCte")[0] as XmlElement;
+            XmlElement elementToSign = document.SelectSingleNode($"//{PrefixCTeNamespace}:{RootElement}", ns) as XmlElement;
             if (elementToSign == null)
             {
-                throw new InvalidXmlFormatException($"{PrefixCTeNamespace}:infCte");
+                throw new InvalidXmlFormatException($"{PrefixCTeNamespace}:{RootElement}");
             }
 
             string referenceId = elementToSign.Attributes["Id"]?.Value;
             if (string.IsNullOrWhiteSpace(referenceId))
             {
-                throw new MissingReferenceIdException($"{PrefixCTeNamespace}:infCte");
+                throw new MissingReferenceIdException($"{PrefixCTeNamespace}:{RootElement}");
             }
 
             return referenceId;

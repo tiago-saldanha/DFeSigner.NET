@@ -43,7 +43,7 @@ namespace DFeSigner.Core.Signers
         /// para identificar o elemento XML a ser assinado e seu ID de referência.
         /// </summary>
         /// <param name="document">O objeto XmlDocument contendo o XML a ser processado.</param>
-        /// <returns>Uma tupla contendo o XmlElement a ser assinado e o seu atributo 'Id'.</returns>
+        /// <returns>Uma string contendo o atributo 'Id' do elemento root a ser assinado.</returns>
         protected abstract string GetReferenceId(XmlDocument document);
 
         /// <summary>

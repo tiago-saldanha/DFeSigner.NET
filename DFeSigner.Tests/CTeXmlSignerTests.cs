@@ -98,8 +98,8 @@ namespace DFeSigner.Tests
             X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
             CTeXmlSigner signer = new CTeXmlSigner();
 
-            var ex = Assert.Throws<UnexpectedDocumentTypeException>(() => signer.Sign(nfceXmlContent, certificate));
-            Assert.Contains("O XML fornecido não é do tipo de documento esperado. Esperado modelo: 57, Encontrado modelo: 55.", ex.Message);
+            var ex = Assert.Throws<MissingXmlElementException>(() => signer.Sign(nfceXmlContent, certificate));
+            Assert.Contains("Elemento 'ide' não encontrado no XML dentro de 'infCte'.", ex.Message);
         }
 
         [Fact]
