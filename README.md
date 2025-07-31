@@ -59,8 +59,8 @@ Para configurar e executar o projeto, siga os passos abaixo:
 1.  **Clone o Repositório:**
 
     ```bash
-    git clone [https://github.com/tiago-saldanha/DFeSigner.NET.git](https://github.com/tiago-saldanha/DFeSigner.NET.git)
-    cd DFeSigner.NET
+    git clone https://github.com/tiago-saldanha/DFeSigner.NET.git
+    cd DFeSigner
     ```
 
 2.  **Abra no Visual Studio:**
