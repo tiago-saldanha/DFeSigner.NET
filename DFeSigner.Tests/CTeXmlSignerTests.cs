@@ -8,6 +8,7 @@ namespace DFeSigner.Tests
     {
         private readonly string _ctePath = Path.Combine(AppContext.BaseDirectory, "Xml", "cte.xml");
         private readonly string _dfeValidPath = Path.Combine(AppContext.BaseDirectory, "Xml", "dfe-valid.xml");
+        private readonly string _dfeInvalidPath = Path.Combine(AppContext.BaseDirectory, "Xml", "dfe-invalid.xml");
         private readonly string _certificatePath = Path.Combine(AppContext.BaseDirectory, "Certificates", "certificate.pfx");
         private readonly string _certificateInvalidPath = Path.Combine(AppContext.BaseDirectory, "Certificates", "certificate.cer");
         private readonly string _certificatePassword = "123";
@@ -140,6 +141,16 @@ namespace DFeSigner.Tests
 
             var expected = signer.IsSignatureValid(xmlContent);
             Assert.True(expected, "A assinatura digital do XML assinado deve ser válida.");
+        }
+
+        [Fact]
+        public void Sign_ValidXmlWithInvalidCertificate_ReturnsSignedXml()
+        {
+            string xmlContent = File.ReadAllText(_dfeInvalidPath);
+            CTeXmlSigner signer = new CTeXmlSigner();
+
+            var expected = signer.IsSignatureValid(xmlContent);
+            Assert.False(expected, "A assinatura digital do XML assinado deve ser válida.");
         }
 
         [Fact]
