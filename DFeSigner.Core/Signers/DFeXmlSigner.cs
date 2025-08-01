@@ -24,17 +24,16 @@ namespace DFeSigner.Core.Signers
         public string Sign(string xmlContent, X509Certificate2 certificate)
         {
             ValidateInput(xmlContent, certificate);
-
             XmlDocument doc = GetXmlDocument(xmlContent);
             string referenceId = GetReferenceId(doc);
+
             SignedXml signedXml = GetInitializedSignedXml(doc, certificate);
             signedXml.AddReference(GetReference(referenceId));
             signedXml.KeyInfo = GetKeyInfo(certificate);
-
             signedXml.ComputeSignature();
             XmlElement xmlSignature = signedXml.GetXml();
-            doc.DocumentElement.AppendChild(xmlSignature);
 
+            doc.DocumentElement.AppendChild(xmlSignature);
             return doc.OuterXml;
         }
 
@@ -53,15 +52,8 @@ namespace DFeSigner.Core.Signers
         {
             XmlDocument doc = GetXmlDocument(xmlContent);
             SignedXml signedXml = new(doc);
-
-            XmlElement signatureElement = doc.GetElementsByTagName("Signature", SignedXml.XmlDsigNamespaceUrl)[0] as XmlElement;
-            if (signatureElement == null)
-            {
-                throw new MissingSignatureElementException();
-            }
-
+            XmlElement signatureElement = doc.GetElementsByTagName("Signature", SignedXml.XmlDsigNamespaceUrl)[0] as XmlElement ?? throw new MissingSignatureElementException();
             signedXml.LoadXml(signatureElement);
-
             return signedXml.CheckSignature();
         }
 
@@ -115,17 +107,10 @@ namespace DFeSigner.Core.Signers
         /// <exception cref="InvalidOperationException">Lançada se o certificado não possuir uma chave privada RSA acessível ou compatível.</exception>
         private SignedXml GetInitializedSignedXml(XmlDocument document, X509Certificate2 certificate)
         {
-            SignedXml signedXml = new SignedXml(document);
-            signedXml.SigningKey = certificate.GetRSAPrivateKey();
-
-            if (signedXml.SigningKey == null)
-            {
-                throw new InvalidCertificateException();
-            }
-
+            SignedXml signedXml = new(document);
+            signedXml.SigningKey = certificate.GetRSAPrivateKey() ?? throw new InvalidCertificateException();
             signedXml.SignedInfo.CanonicalizationMethod = SignedXml.XmlDsigC14NTransformUrl;
             signedXml.SignedInfo.SignatureMethod = SignedXml.XmlDsigRSASHA1Url;
-
             return signedXml;
         }
 

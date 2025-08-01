@@ -34,6 +34,9 @@
     <None Update="Xml\cte.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Xml\dfe-invalid.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Xml\mdfe.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
