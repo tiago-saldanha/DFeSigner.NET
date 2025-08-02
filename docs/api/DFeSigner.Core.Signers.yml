@@ -1,0 +1,82 @@
+### YamlMime:ManagedReference
+items:
+- uid: DFeSigner.Core.Signers
+  commentId: N:DFeSigner.Core.Signers
+  id: DFeSigner.Core.Signers
+  children:
+  - DFeSigner.Core.Signers.CTeXmlSigner
+  - DFeSigner.Core.Signers.DFeXmlSigner
+  - DFeSigner.Core.Signers.MDFeXmlSigner
+  - DFeSigner.Core.Signers.NFCeXmlSigner
+  - DFeSigner.Core.Signers.NFeXmlSigner
+  langs:
+  - csharp
+  - vb
+  name: DFeSigner.Core.Signers
+  nameWithType: DFeSigner.Core.Signers
+  fullName: DFeSigner.Core.Signers
+  type: Namespace
+  assemblies:
+  - DFeSigner.Core
+references:
+- uid: DFeSigner.Core.Signers.CTeXmlSigner
+  commentId: T:DFeSigner.Core.Signers.CTeXmlSigner
+  href: DFeSigner.Core.Signers.CTeXmlSigner.html
+  name: CTeXmlSigner
+  nameWithType: CTeXmlSigner
+  fullName: DFeSigner.Core.Signers.CTeXmlSigner
+- uid: DFeSigner.Core.Signers.DFeXmlSigner
+  commentId: T:DFeSigner.Core.Signers.DFeXmlSigner
+  parent: DFeSigner.Core.Signers
+  href: DFeSigner.Core.Signers.DFeXmlSigner.html
+  name: DFeXmlSigner
+  nameWithType: DFeXmlSigner
+  fullName: DFeSigner.Core.Signers.DFeXmlSigner
+- uid: DFeSigner.Core.Signers.MDFeXmlSigner
+  commentId: T:DFeSigner.Core.Signers.MDFeXmlSigner
+  href: DFeSigner.Core.Signers.MDFeXmlSigner.html
+  name: MDFeXmlSigner
+  nameWithType: MDFeXmlSigner
+  fullName: DFeSigner.Core.Signers.MDFeXmlSigner
+- uid: DFeSigner.Core.Signers.NFCeXmlSigner
+  commentId: T:DFeSigner.Core.Signers.NFCeXmlSigner
+  href: DFeSigner.Core.Signers.NFCeXmlSigner.html
+  name: NFCeXmlSigner
+  nameWithType: NFCeXmlSigner
+  fullName: DFeSigner.Core.Signers.NFCeXmlSigner
+- uid: DFeSigner.Core.Signers.NFeXmlSigner
+  commentId: T:DFeSigner.Core.Signers.NFeXmlSigner
+  href: DFeSigner.Core.Signers.NFeXmlSigner.html
+  name: NFeXmlSigner
+  nameWithType: NFeXmlSigner
+  fullName: DFeSigner.Core.Signers.NFeXmlSigner
+- uid: DFeSigner.Core.Signers
+  commentId: N:DFeSigner.Core.Signers
+  href: DFeSigner.html
+  name: DFeSigner.Core.Signers
+  nameWithType: DFeSigner.Core.Signers
+  fullName: DFeSigner.Core.Signers
+  spec.csharp:
+  - uid: DFeSigner
+    name: DFeSigner
+    href: DFeSigner.html
+  - name: .
+  - uid: DFeSigner.Core
+    name: Core
+    href: DFeSigner.Core.html
+  - name: .
+  - uid: DFeSigner.Core.Signers
+    name: Signers
+    href: DFeSigner.Core.Signers.html
+  spec.vb:
+  - uid: DFeSigner
+    name: DFeSigner
+    href: DFeSigner.html
+  - name: .
+  - uid: DFeSigner.Core
+    name: Core
+    href: DFeSigner.Core.html
+  - name: .
+  - uid: DFeSigner.Core.Signers
+    name: Signers
+    href: DFeSigner.Core.Signers.html

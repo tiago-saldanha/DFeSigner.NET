@@ -1,0 +1,599 @@
+### YamlMime:ManagedReference
+items:
+- uid: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException
+  commentId: T:DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException
+  id: UnexpectedDocumentTypeException
+  parent: DFeSigner.Core.Exceptions
+  children:
+  - DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.#ctor(System.String,System.String)
+  - DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.ExcepctedModel
+  - DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.FoundModel
+  langs:
+  - csharp
+  - vb
+  name: UnexpectedDocumentTypeException
+  nameWithType: UnexpectedDocumentTypeException
+  fullName: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException
+  type: Class
+  source:
+    remote:
+      path: DFeSigner.Core/Exceptions/DFeSignerException.cs
+      branch: feature/add-docfx
+      repo: https://github.com/tiago-saldanha/DFeSigner.git
+    id: UnexpectedDocumentTypeException
+    path: ../DFeSigner.Core/Exceptions/DFeSignerException.cs
+    startLine: 78
+  assemblies:
+  - DFeSigner.Core
+  namespace: DFeSigner.Core.Exceptions
+  summary: 'Exceção para quando o XML é válido, mas não é do tipo de documento fiscal esperado (ex: NF-e passada para assinador de MDF-e).'
+  example: []
+  syntax:
+    content: 'public class UnexpectedDocumentTypeException : DFeSignerException, ISerializable'
+    content.vb: Public Class UnexpectedDocumentTypeException Inherits DFeSignerException Implements ISerializable
+  inheritance:
+  - System.Object
+  - System.Exception
+  - DFeSigner.Core.Exceptions.DFeSignerException
+  implements:
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - System.Exception.GetBaseException
+  - System.Exception.GetType
+  - System.Exception.ToString
+  - System.Exception.Data
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.SerializeObjectState
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.ExcepctedModel
+  commentId: P:DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.ExcepctedModel
+  id: ExcepctedModel
+  parent: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException
+  langs:
+  - csharp
+  - vb
+  name: ExcepctedModel
+  nameWithType: UnexpectedDocumentTypeException.ExcepctedModel
+  fullName: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.ExcepctedModel
+  type: Property
+  source:
+    remote:
+      path: DFeSigner.Core/Exceptions/DFeSignerException.cs
+      branch: feature/add-docfx
+      repo: https://github.com/tiago-saldanha/DFeSigner.git
+    id: ExcepctedModel
+    path: ../DFeSigner.Core/Exceptions/DFeSignerException.cs
+    startLine: 80
+  assemblies:
+  - DFeSigner.Core
+  namespace: DFeSigner.Core.Exceptions
+  syntax:
+    content: public string ExcepctedModel { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ExcepctedModel As String
+  overload: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.ExcepctedModel*
+- uid: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.FoundModel
+  commentId: P:DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.FoundModel
+  id: FoundModel
+  parent: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException
+  langs:
+  - csharp
+  - vb
+  name: FoundModel
+  nameWithType: UnexpectedDocumentTypeException.FoundModel
+  fullName: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.FoundModel
+  type: Property
+  source:
+    remote:
+      path: DFeSigner.Core/Exceptions/DFeSignerException.cs
+      branch: feature/add-docfx
+      repo: https://github.com/tiago-saldanha/DFeSigner.git
+    id: FoundModel
+    path: ../DFeSigner.Core/Exceptions/DFeSignerException.cs
+    startLine: 81
+  assemblies:
+  - DFeSigner.Core
+  namespace: DFeSigner.Core.Exceptions
+  syntax:
+    content: public string FoundModel { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property FoundModel As String
+  overload: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.FoundModel*
+- uid: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.#ctor(System.String,System.String)
+  commentId: M:DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException
+  langs:
+  - csharp
+  - vb
+  name: UnexpectedDocumentTypeException(string, string)
+  nameWithType: UnexpectedDocumentTypeException.UnexpectedDocumentTypeException(string, string)
+  fullName: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.UnexpectedDocumentTypeException(string, string)
+  type: Constructor
+  source:
+    remote:
+      path: DFeSigner.Core/Exceptions/DFeSignerException.cs
+      branch: feature/add-docfx
+      repo: https://github.com/tiago-saldanha/DFeSigner.git
+    id: .ctor
+    path: ../DFeSigner.Core/Exceptions/DFeSignerException.cs
+    startLine: 83
+  assemblies:
+  - DFeSigner.Core
+  namespace: DFeSigner.Core.Exceptions
+  syntax:
+    content: public UnexpectedDocumentTypeException(string expectedModel, string foundModel)
+    parameters:
+    - id: expectedModel
+      type: System.String
+    - id: foundModel
+      type: System.String
+    content.vb: Public Sub New(expectedModel As String, foundModel As String)
+  overload: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.#ctor*
+  nameWithType.vb: UnexpectedDocumentTypeException.New(String, String)
+  fullName.vb: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.New(String, String)
+  name.vb: New(String, String)
+references:
+- uid: DFeSigner.Core.Exceptions
+  commentId: N:DFeSigner.Core.Exceptions
+  href: DFeSigner.html
+  name: DFeSigner.Core.Exceptions
+  nameWithType: DFeSigner.Core.Exceptions
+  fullName: DFeSigner.Core.Exceptions
+  spec.csharp:
+  - uid: DFeSigner
+    name: DFeSigner
+    href: DFeSigner.html
+  - name: .
+  - uid: DFeSigner.Core
+    name: Core
+    href: DFeSigner.Core.html
+  - name: .
+  - uid: DFeSigner.Core.Exceptions
+    name: Exceptions
+    href: DFeSigner.Core.Exceptions.html
+  spec.vb:
+  - uid: DFeSigner
+    name: DFeSigner
+    href: DFeSigner.html
+  - name: .
+  - uid: DFeSigner.Core
+    name: Core
+    href: DFeSigner.Core.html
+  - name: .
+  - uid: DFeSigner.Core.Exceptions
+    name: Exceptions
+    href: DFeSigner.Core.Exceptions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: DFeSigner.Core.Exceptions.DFeSignerException
+  commentId: T:DFeSigner.Core.Exceptions.DFeSignerException
+  parent: DFeSigner.Core.Exceptions
+  href: DFeSigner.Core.Exceptions.DFeSignerException.html
+  name: DFeSignerException
+  nameWithType: DFeSignerException
+  fullName: DFeSigner.Core.Exceptions.DFeSignerException
+- uid: System.Runtime.Serialization.ISerializable
+  commentId: T:System.Runtime.Serialization.ISerializable
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable
+  name: ISerializable
+  nameWithType: ISerializable
+  fullName: System.Runtime.Serialization.ISerializable
+- uid: System.Exception.GetBaseException
+  commentId: M:System.Exception.GetBaseException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  name: GetBaseException()
+  nameWithType: Exception.GetBaseException()
+  fullName: System.Exception.GetBaseException()
+  spec.csharp:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+- uid: System.Exception.GetType
+  commentId: M:System.Exception.GetType
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  name: GetType()
+  nameWithType: Exception.GetType()
+  fullName: System.Exception.GetType()
+  spec.csharp:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+- uid: System.Exception.ToString
+  commentId: M:System.Exception.ToString
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  name: ToString()
+  nameWithType: Exception.ToString()
+  fullName: System.Exception.ToString()
+  spec.csharp:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+- uid: System.Exception.Data
+  commentId: P:System.Exception.Data
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.data
+  name: Data
+  nameWithType: Exception.Data
+  fullName: System.Exception.Data
+- uid: System.Exception.HelpLink
+  commentId: P:System.Exception.HelpLink
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.helplink
+  name: HelpLink
+  nameWithType: Exception.HelpLink
+  fullName: System.Exception.HelpLink
+- uid: System.Exception.HResult
+  commentId: P:System.Exception.HResult
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.hresult
+  name: HResult
+  nameWithType: Exception.HResult
+  fullName: System.Exception.HResult
+- uid: System.Exception.InnerException
+  commentId: P:System.Exception.InnerException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.innerexception
+  name: InnerException
+  nameWithType: Exception.InnerException
+  fullName: System.Exception.InnerException
+- uid: System.Exception.Message
+  commentId: P:System.Exception.Message
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.message
+  name: Message
+  nameWithType: Exception.Message
+  fullName: System.Exception.Message
+- uid: System.Exception.Source
+  commentId: P:System.Exception.Source
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.source
+  name: Source
+  nameWithType: Exception.Source
+  fullName: System.Exception.Source
+- uid: System.Exception.StackTrace
+  commentId: P:System.Exception.StackTrace
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.stacktrace
+  name: StackTrace
+  nameWithType: Exception.StackTrace
+  fullName: System.Exception.StackTrace
+- uid: System.Exception.TargetSite
+  commentId: P:System.Exception.TargetSite
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.targetsite
+  name: TargetSite
+  nameWithType: Exception.TargetSite
+  fullName: System.Exception.TargetSite
+- uid: System.Exception.SerializeObjectState
+  commentId: E:System.Exception.SerializeObjectState
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.serializeobjectstate
+  name: SerializeObjectState
+  nameWithType: Exception.SerializeObjectState
+  fullName: System.Exception.SerializeObjectState
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Runtime.Serialization
+  commentId: N:System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Runtime.Serialization
+  nameWithType: System.Runtime.Serialization
+  fullName: System.Runtime.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+- uid: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.ExcepctedModel*
+  commentId: Overload:DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.ExcepctedModel
+  href: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.html#DFeSigner_Core_Exceptions_UnexpectedDocumentTypeException_ExcepctedModel
+  name: ExcepctedModel
+  nameWithType: UnexpectedDocumentTypeException.ExcepctedModel
+  fullName: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.ExcepctedModel
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.FoundModel*
+  commentId: Overload:DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.FoundModel
+  href: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.html#DFeSigner_Core_Exceptions_UnexpectedDocumentTypeException_FoundModel
+  name: FoundModel
+  nameWithType: UnexpectedDocumentTypeException.FoundModel
+  fullName: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.FoundModel
+- uid: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.#ctor*
+  commentId: Overload:DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.#ctor
+  href: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.html#DFeSigner_Core_Exceptions_UnexpectedDocumentTypeException__ctor_System_String_System_String_
+  name: UnexpectedDocumentTypeException
+  nameWithType: UnexpectedDocumentTypeException.UnexpectedDocumentTypeException
+  fullName: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.UnexpectedDocumentTypeException
+  nameWithType.vb: UnexpectedDocumentTypeException.New
+  fullName.vb: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.New
+  name.vb: New

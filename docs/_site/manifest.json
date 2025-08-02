@@ -1,0 +1,354 @@
+{
+  "source_base_path": "C:/dev/DFeSigner/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Exceptions.DFeSignerException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Exceptions.DFeSignerException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Exceptions.DFeSignerException",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Exceptions.DFeSignerException.yml\" sourcestartlinenumber=\"1\">Exceção base para erros relacionados à assinatura de documentos fiscais eletrônicos.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Exceptions.InvalidCertificateException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Exceptions.InvalidCertificateException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Exceptions.InvalidCertificateException",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Exceptions.InvalidCertificateException.yml\" sourcestartlinenumber=\"1\">Exceção para quando um certificado digital inválido ou sem chave privada é utilizado.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Exceptions.InvalidXmlFormatException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Exceptions.InvalidXmlFormatException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Exceptions.InvalidXmlFormatException",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Exceptions.InvalidXmlFormatException.yml\" sourcestartlinenumber=\"1\">Exceção para quando o XML fornecido não possui o elemento raiz esperado para a assinatura digital.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Exceptions.MissingReferenceIdException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Exceptions.MissingReferenceIdException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Exceptions.MissingReferenceIdException",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Exceptions.MissingReferenceIdException.yml\" sourcestartlinenumber=\"1\">Exceção para quando o XML fornecido não contém o atributo 'Id' (referenceId)\nnecessário para a assinatura digital no elemento raiz do documento fiscal eletrônico.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Exceptions.MissingSignatureElementException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Exceptions.MissingSignatureElementException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Exceptions.MissingSignatureElementException",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Exceptions.MissingSignatureElementException.yml\" sourcestartlinenumber=\"1\">Exceção para quando um XML não contém a tag Signature.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Exceptions.MissingXmlElementException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Exceptions.MissingXmlElementException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Exceptions.MissingXmlElementException",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Exceptions.MissingXmlElementException.yml\" sourcestartlinenumber=\"1\">Exceção para quando um elemento XML crítico para a assinatura não é encontrado.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.yml\" sourcestartlinenumber=\"1\">Exceção para quando o XML é válido, mas não é do tipo de documento fiscal esperado (ex: NF-e passada para assinador de MDF-e).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Exceptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Exceptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Signers.CTeXmlSigner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Signers.CTeXmlSigner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Signers.CTeXmlSigner",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Signers.CTeXmlSigner.yml\" sourcestartlinenumber=\"1\">Implementação concreta da assinatura digital para CT-e.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Signers.DFeXmlSigner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Signers.DFeXmlSigner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Signers.DFeXmlSigner",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Signers.DFeXmlSigner.yml\" sourcestartlinenumber=\"1\">Classe abstrata base para a assinatura digital de Documentos Fiscais Eletrônicos (DF-e).\nEsta classe define o contrato para a assinatura e manipula as operações comuns de criptografia XML.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Signers.MDFeXmlSigner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Signers.MDFeXmlSigner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Signers.MDFeXmlSigner",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Signers.MDFeXmlSigner.yml\" sourcestartlinenumber=\"1\">Implementação concreta da assinatura digital para MDF-e.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Signers.NFCeXmlSigner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Signers.NFCeXmlSigner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Signers.NFCeXmlSigner",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Signers.NFCeXmlSigner.yml\" sourcestartlinenumber=\"1\">Implementação concreta da assinatura digital para NFC-e (Nota Fiscal de Consumidor Eletrônica).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Signers.NFeXmlSigner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Signers.NFeXmlSigner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Signers.NFeXmlSigner",
+      "Summary": "<p sourcefile=\"api/DFeSigner.Core.Signers.NFeXmlSigner.yml\" sourcestartlinenumber=\"1\">Implementação concreta da assinatura digital para NF-e.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DFeSigner.Core.Signers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DFeSigner.Core.Signers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DFeSigner.Core.Signers",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/certificado.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/certificado.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/cte.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/cte.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/license.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/license.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/mdfe.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/mdfe.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/nfce.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/nfce.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/nfe.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/nfe.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/tratamento-de-erros.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/tratamento-de-erros.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
