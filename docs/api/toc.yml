@@ -1,0 +1,47 @@
+### YamlMime:TableOfContent
+items:
+- uid: DFeSigner.Core.Exceptions
+  name: DFeSigner.Core.Exceptions
+  type: Namespace
+  items:
+  - uid: DFeSigner.Core.Exceptions.DFeSignerException
+    name: DFeSignerException
+    type: Class
+  - uid: DFeSigner.Core.Exceptions.InvalidCertificateException
+    name: InvalidCertificateException
+    type: Class
+  - uid: DFeSigner.Core.Exceptions.InvalidXmlFormatException
+    name: InvalidXmlFormatException
+    type: Class
+  - uid: DFeSigner.Core.Exceptions.MissingReferenceIdException
+    name: MissingReferenceIdException
+    type: Class
+  - uid: DFeSigner.Core.Exceptions.MissingSignatureElementException
+    name: MissingSignatureElementException
+    type: Class
+  - uid: DFeSigner.Core.Exceptions.MissingXmlElementException
+    name: MissingXmlElementException
+    type: Class
+  - uid: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException
+    name: UnexpectedDocumentTypeException
+    type: Class
+- uid: DFeSigner.Core.Signers
+  name: DFeSigner.Core.Signers
+  type: Namespace
+  items:
+  - uid: DFeSigner.Core.Signers.CTeXmlSigner
+    name: CTeXmlSigner
+    type: Class
+  - uid: DFeSigner.Core.Signers.DFeXmlSigner
+    name: DFeXmlSigner
+    type: Class
+  - uid: DFeSigner.Core.Signers.MDFeXmlSigner
+    name: MDFeXmlSigner
+    type: Class
+  - uid: DFeSigner.Core.Signers.NFCeXmlSigner
+    name: NFCeXmlSigner
+    type: Class
+  - uid: DFeSigner.Core.Signers.NFeXmlSigner
+    name: NFeXmlSigner
+    type: Class
+memberLayout: SamePage

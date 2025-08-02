@@ -1,0 +1,96 @@
+### YamlMime:ManagedReference
+items:
+- uid: DFeSigner.Core.Exceptions
+  commentId: N:DFeSigner.Core.Exceptions
+  id: DFeSigner.Core.Exceptions
+  children:
+  - DFeSigner.Core.Exceptions.DFeSignerException
+  - DFeSigner.Core.Exceptions.InvalidCertificateException
+  - DFeSigner.Core.Exceptions.InvalidXmlFormatException
+  - DFeSigner.Core.Exceptions.MissingReferenceIdException
+  - DFeSigner.Core.Exceptions.MissingSignatureElementException
+  - DFeSigner.Core.Exceptions.MissingXmlElementException
+  - DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException
+  langs:
+  - csharp
+  - vb
+  name: DFeSigner.Core.Exceptions
+  nameWithType: DFeSigner.Core.Exceptions
+  fullName: DFeSigner.Core.Exceptions
+  type: Namespace
+  assemblies:
+  - DFeSigner.Core
+references:
+- uid: DFeSigner.Core.Exceptions.DFeSignerException
+  commentId: T:DFeSigner.Core.Exceptions.DFeSignerException
+  parent: DFeSigner.Core.Exceptions
+  href: DFeSigner.Core.Exceptions.DFeSignerException.html
+  name: DFeSignerException
+  nameWithType: DFeSignerException
+  fullName: DFeSigner.Core.Exceptions.DFeSignerException
+- uid: DFeSigner.Core.Exceptions.InvalidCertificateException
+  commentId: T:DFeSigner.Core.Exceptions.InvalidCertificateException
+  href: DFeSigner.Core.Exceptions.InvalidCertificateException.html
+  name: InvalidCertificateException
+  nameWithType: InvalidCertificateException
+  fullName: DFeSigner.Core.Exceptions.InvalidCertificateException
+- uid: DFeSigner.Core.Exceptions.InvalidXmlFormatException
+  commentId: T:DFeSigner.Core.Exceptions.InvalidXmlFormatException
+  href: DFeSigner.Core.Exceptions.InvalidXmlFormatException.html
+  name: InvalidXmlFormatException
+  nameWithType: InvalidXmlFormatException
+  fullName: DFeSigner.Core.Exceptions.InvalidXmlFormatException
+- uid: DFeSigner.Core.Exceptions.MissingReferenceIdException
+  commentId: T:DFeSigner.Core.Exceptions.MissingReferenceIdException
+  href: DFeSigner.Core.Exceptions.MissingReferenceIdException.html
+  name: MissingReferenceIdException
+  nameWithType: MissingReferenceIdException
+  fullName: DFeSigner.Core.Exceptions.MissingReferenceIdException
+- uid: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException
+  commentId: T:DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException
+  href: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException.html
+  name: UnexpectedDocumentTypeException
+  nameWithType: UnexpectedDocumentTypeException
+  fullName: DFeSigner.Core.Exceptions.UnexpectedDocumentTypeException
+- uid: DFeSigner.Core.Exceptions.MissingXmlElementException
+  commentId: T:DFeSigner.Core.Exceptions.MissingXmlElementException
+  href: DFeSigner.Core.Exceptions.MissingXmlElementException.html
+  name: MissingXmlElementException
+  nameWithType: MissingXmlElementException
+  fullName: DFeSigner.Core.Exceptions.MissingXmlElementException
+- uid: DFeSigner.Core.Exceptions.MissingSignatureElementException
+  commentId: T:DFeSigner.Core.Exceptions.MissingSignatureElementException
+  href: DFeSigner.Core.Exceptions.MissingSignatureElementException.html
+  name: MissingSignatureElementException
+  nameWithType: MissingSignatureElementException
+  fullName: DFeSigner.Core.Exceptions.MissingSignatureElementException
+- uid: DFeSigner.Core.Exceptions
+  commentId: N:DFeSigner.Core.Exceptions
+  href: DFeSigner.html
+  name: DFeSigner.Core.Exceptions
+  nameWithType: DFeSigner.Core.Exceptions
+  fullName: DFeSigner.Core.Exceptions
+  spec.csharp:
+  - uid: DFeSigner
+    name: DFeSigner
+    href: DFeSigner.html
+  - name: .
+  - uid: DFeSigner.Core
+    name: Core
+    href: DFeSigner.Core.html
+  - name: .
+  - uid: DFeSigner.Core.Exceptions
+    name: Exceptions
+    href: DFeSigner.Core.Exceptions.html
+  spec.vb:
+  - uid: DFeSigner
+    name: DFeSigner
+    href: DFeSigner.html
+  - name: .
+  - uid: DFeSigner.Core
+    name: Core
+    href: DFeSigner.Core.html
+  - name: .
+  - uid: DFeSigner.Core.Exceptions
+    name: Exceptions
+    href: DFeSigner.Core.Exceptions.html
