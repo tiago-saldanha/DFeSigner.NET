@@ -13,6 +13,17 @@ namespace DFeSigner.Core.Signers
     public abstract class DFeXmlSigner
     {
         /// <summary>
+        /// Tag padrão que representa o grupo de identificação do documento fiscal eletrônico.
+        /// </summary>
+        protected const string IdeTagElement = "ide";
+
+        /// <summary>
+        /// Tag padrão que representa o modelo do documento fiscal eletrônico.
+        /// </summary>
+        protected const string ModTagElement = "mod";
+
+
+        /// <summary>
         /// Assina digitalmente um documento XML de DF-e usando um certificado digital.
         /// Este método é o ponto de entrada principal para a assinatura.
         /// </summary>
@@ -115,7 +126,7 @@ namespace DFeSigner.Core.Signers
         }
 
         /// <summary>
-        /// Cria e configura um objeto KeyInfo para a assinatura XML.
+        /// Cria e configura um objeto Reference para a assinatura XML.
         /// Este método encapsula a definição do URI de referência e das transformações padrão.
         /// </summary>
         /// <param name="referenceId">O ID do elemento XML a ser referenciado na assinatura.</param>

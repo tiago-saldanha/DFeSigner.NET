@@ -8,9 +8,10 @@ namespace DFeSigner.Core.Signers
     /// </summary>
     public class NFeXmlSigner : DFeXmlSigner
     {
-        private const string NFeNamespace = "http://www.portalfiscal.inf.br/nfe";
-        private const string PrefixNFeNamespace = "nfe";
-        private const string RootElement = "infNFe";
+        private const string _nfeNamespace = "http://www.portalfiscal.inf.br/nfe";
+        private const string _prefix = "nfe";
+        private const string _rootElement = "infNFe";
+        private const string _documentModel = "55";
 
         /// <summary>
         /// Implementação específica para NF-e para identificar o elemento root 'infNFe' a ser assinado.
@@ -25,30 +26,30 @@ namespace DFeSigner.Core.Signers
         protected override string GetReferenceId(XmlDocument document)
         {
             XmlNamespaceManager ns = new(document.NameTable);
-            ns.AddNamespace(PrefixNFeNamespace, NFeNamespace);
+            ns.AddNamespace(_prefix, _nfeNamespace);
 
-            XmlElement ideElement = document.SelectSingleNode($"//{PrefixNFeNamespace}:ide", ns) as XmlElement;
+            XmlElement ideElement = document.SelectSingleNode($"//{_prefix}:{IdeTagElement}", ns) as XmlElement;
             if (ideElement == null)
             {
-                throw new MissingXmlElementException("ide", RootElement);
+                throw new MissingXmlElementException(IdeTagElement, _rootElement);
             }
 
-            string model = document.SelectSingleNode($"//{PrefixNFeNamespace}:mod", ns)?.InnerText;
-            if (model != "55")
+            string model = document.SelectSingleNode($"//{_prefix}:{ModTagElement}", ns)?.InnerText;
+            if (model != _documentModel)
             {
-                throw new UnexpectedDocumentTypeException("55", model);
+                throw new UnexpectedDocumentTypeException(_documentModel, model);
             }
 
-            XmlElement elementToSign = document.SelectSingleNode($"//{PrefixNFeNamespace}:{RootElement}", ns) as XmlElement;
+            XmlElement elementToSign = document.SelectSingleNode($"//{_prefix}:{_rootElement}", ns) as XmlElement;
             if (elementToSign == null)
             {
-                throw new InvalidXmlFormatException($"{PrefixNFeNamespace}:{RootElement}");
+                throw new InvalidXmlFormatException($"{_prefix}:{_rootElement}");
             }
 
             string referenceId = elementToSign.Attributes["Id"]?.Value;
             if (string.IsNullOrWhiteSpace(referenceId))
             {
-                throw new MissingReferenceIdException($"{PrefixNFeNamespace}:{RootElement}");
+                throw new MissingReferenceIdException($"{_prefix}:{_rootElement}");
             }
 
             return referenceId;
