@@ -31,6 +31,9 @@
     <None Update="Certificates\certificate.pfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Xml\cancelamento-nfe.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Xml\cte.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
