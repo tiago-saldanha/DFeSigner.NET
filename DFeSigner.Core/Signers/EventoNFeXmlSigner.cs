@@ -33,7 +33,7 @@ namespace DFeSigner.Core.Signers
 
             if (elementToSign == null)
             {
-                throw new InvalidXmlFormatException($"{_rootElement} (namespace: {_nfeNamespace})");
+                throw new InvalidXmlFormatException($"{_prefix}:{_rootElement}");
             }
 
             string referenceId = elementToSign.Attributes["Id"]?.Value;
