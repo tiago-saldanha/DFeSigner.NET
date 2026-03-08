@@ -1,12 +1,8 @@
 # DFeSigner.NET
 
-![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
-![xUnit](https://img.shields.io/badge/xUnit-802B7D?style=for-the-badge&logo=xunit&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+[![NuGet](https://img.shields.io/nuget/v/DFeSigner.NET.svg)](https://www.nuget.org/packages/DFeSigner.NET)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/DFeSigner.NET.svg)](https://www.nuget.org/packages/DFeSigner.NET)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-
----
 
 ## 📖 Sobre o Projeto
 
