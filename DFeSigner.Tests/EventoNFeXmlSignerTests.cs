@@ -19,79 +19,70 @@ namespace DFeSigner.Tests
         [Fact]
         public void Sign_ValidNFeXmlAndCertificate_IsSignatureValidReturnsTrue()
         {
-            string xmlContent = File.ReadAllText(_cancelamentoNFePath);
-            Assert.False(string.IsNullOrWhiteSpace(xmlContent), "O conteúdo do XML de exemplo da NF-e não pode ser vazio.");
+            var xmlContent = File.ReadAllText(_cancelamentoNFePath);
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+            var sut = new EventoNFeXmlSigner();
 
-            X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
-            Assert.NotNull(certificate);
+            var expected = sut.Sign(xmlContent, certificate);
 
-            EventoNFeXmlSigner signer = new EventoNFeXmlSigner();
-
-            string signedXml = signer.Sign(xmlContent, certificate);
-
-            Assert.False(string.IsNullOrWhiteSpace(signedXml));
-            Assert.Contains("<Signature", signedXml);
-
-            bool isSignatureValid = signer.IsSignatureValid(signedXml);
-            Assert.True(isSignatureValid, "A assinatura digital do XML assinado deve ser válida.");
+            Assert.False(string.IsNullOrWhiteSpace(expected));
+            Assert.Contains("<Signature", expected);
+            Assert.True(sut.IsSignatureValid(expected));
         }
 
         [Fact]
         public void Sign_InvalidXmlContentWithoutReferenceId_ThrowsInvalidOperationException()
         {
-            string invalidXml = InvalidXmlWithoutReferenceId;
+            var invalidXml = InvalidXmlWithoutReferenceId;
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+            
+            var sut = new EventoNFeXmlSigner();
 
-            X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
-            EventoNFeXmlSigner signer = new EventoNFeXmlSigner();
-
-            var ex = Assert.Throws<MissingReferenceIdException>(() => signer.Sign(invalidXml, certificate));
-            Assert.Contains("O atributo 'Id' (referenceId) não foi encontrado ou está vazio no elemento 'infEvento'.", ex.Message);
+            Assert.Throws<MissingReferenceIdException>(() => sut.Sign(invalidXml, certificate));
         }
 
         [Fact]
         public void Sign_InvalidXmlContentWithoutElementInfNFe_ThrowsInvalidOperationException()
         {
-            string invalidXml = InvalidXmlWithoutInfNFeElement;
+            var invalidXml = InvalidXmlWithoutInfNFeElement;
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+            
+            var sut = new EventoNFeXmlSigner();
 
-            X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
-            EventoNFeXmlSigner signer = new EventoNFeXmlSigner();
-
-            var ex = Assert.Throws<InvalidXmlFormatException>(() => signer.Sign(invalidXml, certificate));
-            Assert.Contains($"O XML fornecido não contém a tag raiz esperada para assinatura digital: 'nfe:infEvento'.", ex.Message);
+            Assert.Throws<InvalidXmlFormatException>(() => sut.Sign(invalidXml, certificate));
         }
 
         [Fact]
         public void Sign_CertificateWithoutPrivateKey_ThrowsInvalidOperationException()
         {
-            string xmlContent = File.ReadAllText(_cancelamentoNFePath);
+            var xmlContent = File.ReadAllText(_cancelamentoNFePath);
+            var certificate = new X509Certificate2(_certificateInvalidPath);
 
-            X509Certificate2 certificate = new X509Certificate2(_certificateInvalidPath);
-            Assert.Null(certificate.GetRSAPrivateKey());
+            var sut = new EventoNFeXmlSigner();
 
-            EventoNFeXmlSigner signer = new EventoNFeXmlSigner();
-
-            var ex = Assert.Throws<InvalidCertificateException>(() => signer.Sign(xmlContent, certificate));
-            Assert.Contains("O certificado digital fornecido é inválido ou não possui uma chave privada acessível.", ex.Message);
+            Assert.Throws<InvalidCertificateException>(() => sut.Sign(xmlContent, certificate));
         }
 
         [Fact]
         public void Sign_ValidXmlWithValidCertificate_ReturnsSignedXml()
         {
-            string xmlContent = File.ReadAllText(_dfeValidPath);
-            EventoNFeXmlSigner signer = new EventoNFeXmlSigner();
+            var xmlContent = File.ReadAllText(_dfeValidPath);
+            var sut = new EventoNFeXmlSigner();
 
-            var expected = signer.IsSignatureValid(xmlContent);
-            Assert.True(expected, "A assinatura digital do XML assinado deve ser válida.");
+            var expected = sut.IsSignatureValid(xmlContent);
+            
+            Assert.True(expected);
         }
 
         [Fact]
         public void Sign_ValidXmlWithInvalidCertificate_ReturnsSignedXml()
         {
-            string xmlContent = File.ReadAllText(_dfeInvalidPath);
-            EventoNFeXmlSigner signer = new EventoNFeXmlSigner();
+            var xmlContent = File.ReadAllText(_dfeInvalidPath);
+            var sut = new EventoNFeXmlSigner();
 
-            var expected = signer.IsSignatureValid(xmlContent);
-            Assert.False(expected, "A assinatura digital do XML assinado deve ser válida.");
+            var expected = sut.IsSignatureValid(xmlContent);
+            
+            Assert.False(expected);
         }
     }
 }

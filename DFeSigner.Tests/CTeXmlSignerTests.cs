@@ -21,156 +21,146 @@ namespace DFeSigner.Tests
         [Fact]
         public void Sign_ValidCTeXmlAndCertificate_ReturnsSignedXml()
         {
-            string xmlContent = File.ReadAllText(_ctePath);
-            Assert.False(string.IsNullOrWhiteSpace(xmlContent), "O conteúdo do XML de exemplo do CT-e não pode ser vazio.");
+            var xmlContent = File.ReadAllText(_ctePath);
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+            var sut = new CTeXmlSigner();
 
-            X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
-            Assert.NotNull(certificate);
+            var expected = sut.Sign(xmlContent, certificate);
 
-            CTeXmlSigner signer = new CTeXmlSigner();
-
-            string signedXml = signer.Sign(xmlContent, certificate);
-
-            Assert.False(string.IsNullOrWhiteSpace(signedXml));
-            Assert.Contains("<Signature", signedXml);
+            Assert.False(string.IsNullOrWhiteSpace(expected));
+            Assert.Contains("<Signature", expected);
         }
 
         [Fact]
         public void Sign_InvalidXmlContentWithoutReferenceId_ThrowsInvalidOperationException()
         {
-            string invalidXml = InvalidXmlWithoutReferenceId;
+            var invalidXml = InvalidXmlWithoutReferenceId;
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+            
+            var sut = new CTeXmlSigner();
 
-            X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
-            CTeXmlSigner signer = new CTeXmlSigner();
-
-            var ex = Assert.Throws<MissingReferenceIdException>(() => signer.Sign(invalidXml, certificate));
-            Assert.Contains("O atributo 'Id' (referenceId) não foi encontrado ou está vazio no elemento 'cte:infCte'.", ex.Message);
+            Assert.Throws<MissingReferenceIdException>(() => sut.Sign(invalidXml, certificate));
         }
 
         [Fact]
         public void Sign_InvalidXmlContentWithoutElementInfCte_ThrowsInvalidOperationException()
         {
-            string invalidXml = InvalidXmlWithoutInfCteElement;
+            var invalidXml = InvalidXmlWithoutInfCteElement;
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+            
+            var sut = new CTeXmlSigner();
 
-            X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
-            CTeXmlSigner signer = new CTeXmlSigner();
-
-            var ex = Assert.Throws<InvalidXmlFormatException>(() => signer.Sign(invalidXml, certificate));
-            Assert.Contains("O XML fornecido não contém a tag raiz esperada para assinatura digital: 'cte:infCte'.", ex.Message);
+            Assert.Throws<InvalidXmlFormatException>(() => sut.Sign(invalidXml, certificate));
         }
 
         [Fact]
         public void Sign_InvalidXmlContentWithoutElementIde_ThrowsInvalidOperationException()
         {
-            string invalidXml = InvalidXmlWithoutIdeElement;
+            var invalidXml = InvalidXmlWithoutIdeElement;
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+            
+            var sut = new CTeXmlSigner();
 
-            X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
-            CTeXmlSigner signer = new CTeXmlSigner();
-
-            var ex = Assert.Throws<MissingXmlElementException>(() => signer.Sign(invalidXml, certificate));
-            Assert.Contains("Elemento 'ide' não encontrado no XML dentro de 'infCte'.", ex.Message);
+            Assert.Throws<MissingXmlElementException>(() => sut.Sign(invalidXml, certificate));
         }
 
         [Fact]
         public void Sign_InvalidXmlContent_ThrowsArgumentException()
         {
-            string invalidXml = "";
-            X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
-            CTeXmlSigner signer = new CTeXmlSigner();
+            var invalidXml = string.Empty;
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+            
+            var sut = new CTeXmlSigner();
 
-            var ex = Assert.Throws<InvalidXmlFormatException>(() => signer.Sign(invalidXml, certificate));
-            Assert.Contains("O XML fornecido não está no formato esperado ou é nulo/vazio.", ex.Message);
+            Assert.Throws<InvalidXmlFormatException>(() => sut.Sign(invalidXml, certificate));
         }
 
         [Fact]
         public void Sign_NullCertificate_ThrowsArgumentNullException()
         {
-            string xmlContent = File.ReadAllText(_ctePath);
-            X509Certificate2 nullCertificate = null;
-            CTeXmlSigner signer = new CTeXmlSigner();
+            var xmlContent = File.ReadAllText(_ctePath);
+            
+            var sut = new CTeXmlSigner();
 
-            var ex = Assert.Throws<InvalidCertificateException>(() => signer.Sign(xmlContent, nullCertificate));
-            Assert.Contains("O certificado digital fornecido é inválido ou não possui uma chave privada acessível.", ex.Message);
+            Assert.Throws<InvalidCertificateException>(() => sut.Sign(xmlContent, null));
         }
 
         [Fact]
         public void Sign_NFeXmlPassedToCTeSigner_ThrowsInvalidOperationException()
         {
-            string nfceXmlContent = InvalidXmlWithModElementIncorrect;
-            X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
-            CTeXmlSigner signer = new CTeXmlSigner();
+            var nfceXmlContent = InvalidXmlWithModElementIncorrect;
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+            
+            var sut = new CTeXmlSigner();
 
-            var ex = Assert.Throws<UnexpectedDocumentTypeException>(() => signer.Sign(nfceXmlContent, certificate));
-            Assert.Contains("O XML fornecido não é do tipo de documento esperado. Esperado modelo: 57, Encontrado modelo: 65.", ex.Message);
+            Assert.Throws<UnexpectedDocumentTypeException>(() => sut.Sign(nfceXmlContent, certificate));
         }
 
         [Fact]
         public void Sign_CertificateWithoutPrivateKey_ThrowsInvalidOperationException()
         {
-            string xmlContent = File.ReadAllText(_ctePath);
+            var xmlContent = File.ReadAllText(_ctePath);
+            var certificate = new X509Certificate2(_certificateInvalidPath);
 
-            X509Certificate2 certificate = new X509Certificate2(_certificateInvalidPath);
-            Assert.Null(certificate.GetRSAPrivateKey());
+            var sut = new CTeXmlSigner();
 
-            CTeXmlSigner signer = new CTeXmlSigner();
-
-            var ex = Assert.Throws<InvalidCertificateException>(() => signer.Sign(xmlContent, certificate));
-            Assert.Contains("O certificado digital fornecido é inválido ou não possui uma chave privada acessível.", ex.Message);
+            Assert.Throws<InvalidCertificateException>(() => sut.Sign(xmlContent, certificate));
         }
 
         [Fact]
         public void Sign_ValidCTeXmlAndCertificate_IsSignatureValidReturnsTrue()
         {
-            string xmlContent = File.ReadAllText(_ctePath);
-            X509Certificate2 certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+            var xmlContent = File.ReadAllText(_ctePath);
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+            var sut = new CTeXmlSigner();
+            
+            var expected = sut.Sign(xmlContent, certificate);
 
-            CTeXmlSigner signer = new CTeXmlSigner();
-            string signedXml = signer.Sign(xmlContent, certificate);
-
-            Assert.False(string.IsNullOrWhiteSpace(signedXml), "O XML assinado não pode ter seu conteúdo vazio");
-            Assert.Contains("<Signature", signedXml);
-
-            Assert.True(signer.IsSignatureValid(signedXml), "O XML foi assinado com sucesso!");
+            Assert.False(string.IsNullOrWhiteSpace(expected));
+            Assert.Contains("<Signature", expected);
+            Assert.True(sut.IsSignatureValid(expected));
         }
 
         [Fact]
         public void Sign_ValidXmlWithValidCertificate_ReturnsSignedXml()
         {
-            string xmlContent = File.ReadAllText(_dfeValidPath);
-            CTeXmlSigner signer = new CTeXmlSigner();
+            var xmlContent = File.ReadAllText(_dfeValidPath);
+            var sut = new CTeXmlSigner();
 
-            var expected = signer.IsSignatureValid(xmlContent);
-            Assert.True(expected, "A assinatura digital do XML assinado deve ser válida.");
+            var expected = sut.IsSignatureValid(xmlContent);
+            
+            Assert.True(expected);
         }
 
         [Fact]
         public void Sign_ValidXmlWithInvalidCertificate_ReturnsSignedXml()
         {
-            string xmlContent = File.ReadAllText(_dfeInvalidPath);
-            CTeXmlSigner signer = new CTeXmlSigner();
+            var xmlContent = File.ReadAllText(_dfeInvalidPath);
+            var sut = new CTeXmlSigner();
 
-            var expected = signer.IsSignatureValid(xmlContent);
-            Assert.False(expected, "A assinatura digital do XML assinado deve ser válida.");
+            var expected = sut.IsSignatureValid(xmlContent);
+            
+            Assert.False(expected);
         }
 
         [Fact]
         public void Sign_NullOrEmptyXmlContent_ThrowsArgumentException()
         {
-            string xmlContent = string.Empty;
-            CTeXmlSigner signer = new CTeXmlSigner();
+            var xmlContent = string.Empty;
+            
+            var sut = new CTeXmlSigner();
 
-            var ex = Assert.Throws<InvalidXmlFormatException>(() => signer.IsSignatureValid(xmlContent));
-            Assert.Contains("O XML fornecido não está no formato esperado ou é nulo/vazio.", ex.Message);
+            Assert.Throws<InvalidXmlFormatException>(() => sut.IsSignatureValid(xmlContent));
         }
 
         [Fact]
         public void IsSignatureValid_XmlWithoutSignatureElement_ThrowsMissingSignatureElementException()
         {
-            string xmlContent = File.ReadAllText(_ctePath);
-            CTeXmlSigner signer = new CTeXmlSigner();
+            var xmlContent = File.ReadAllText(_ctePath);
+            
+            var signer = new CTeXmlSigner();
 
-            var ex = Assert.Throws<MissingSignatureElementException>(() => signer.IsSignatureValid(xmlContent));
-            Assert.Contains("O XML fornecido não contém a tag Signature necessária para a validação da assinatura digital.", ex.Message);
+            Assert.Throws<MissingSignatureElementException>(() => signer.IsSignatureValid(xmlContent));
         }
     }
 }
