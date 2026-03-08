@@ -2,6 +2,8 @@
 
 [![NuGet](https://img.shields.io/nuget/v/DFeSigner.NET.svg)](https://www.nuget.org/packages/DFeSigner.NET)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/DFeSigner.NET.svg)](https://www.nuget.org/packages/DFeSigner.NET)
+[![Build](https://github.com/tiago-saldanha/DFeSigner.NET/actions/workflows/coverage.yml/badge.svg)](https://github.com/tiago-saldanha/DFeSigner.NET/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/tiago-saldanha/DFeSigner.NET?branch=master)](https://codecov.io/gh/tiago-saldanha/DFeSigner.NET)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## 📖 Sobre o Projeto
